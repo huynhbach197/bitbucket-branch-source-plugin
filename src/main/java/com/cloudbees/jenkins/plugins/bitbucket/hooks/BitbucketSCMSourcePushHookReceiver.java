@@ -50,6 +50,7 @@ public class BitbucketSCMSourcePushHookReceiver extends CrumbExclusion implement
     private static final String PATH = "bitbucket-scmsource-hook";
 
     public static final String FULL_PATH = PATH + "/notify";
+    public static int Notify_times  = 1;
 
     @Override
     public boolean process(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
@@ -76,6 +77,8 @@ public class BitbucketSCMSourcePushHookReceiver extends CrumbExclusion implement
      * @throws IOException if there is any issue reading the HTTP content payload.
      */
     public HttpResponse doNotify(StaplerRequest req) throws IOException {
+        LOGGER.log(Level.FINE, String.format("[BitbucketSCMSourcePushHookReceiver]NOTIFY_bachdebug- %s", Notify_times));
+        Notify_times += 1;
         String origin = SCMEvent.originOf(req);
         String body = IOUtils.toString(req.getInputStream());
         String eventKey = req.getHeader("X-Event-Key");
