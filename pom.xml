@@ -26,7 +26,7 @@
   </licenses>
 
   <properties>
-    <changelist>130423092022-SNAPSHOT</changelist>
+    <changelist>174923092022-SNAPSHOT</changelist>
     <gitHubRepo>jenkinsci/bitbucket-branch-source-plugin</gitHubRepo>
     <jenkins.version>2.332.4</jenkins.version>
     <hpi.compatibleSinceVersion>2.0</hpi.compatibleSinceVersion>

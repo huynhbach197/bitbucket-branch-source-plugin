@@ -53,7 +53,7 @@ import jenkins.scm.api.mixin.ChangeRequestCheckoutStrategy;
 public class NativeServerPullRequestHookProcessor extends HookProcessor {
 
     private static final Logger LOGGER = Logger.getLogger(NativeServerPullRequestHookProcessor.class.getName());
-
+    public int Notify_times  = 1;
     @Override
     public void process(HookEventType hookEvent, String payload, BitbucketType instanceType, String origin) {
         // without a server URL, the event wouldn't match anything
@@ -61,7 +61,12 @@ public class NativeServerPullRequestHookProcessor extends HookProcessor {
 
     @Override
     public void process(HookEventType hookEvent, String payload, BitbucketType instanceType, String origin, String serverUrl) {
-
+        LOGGER.log(Level.FINE, String.format("[NativeServerPullRequestHookProcessor]payload_bachdebug- %s", payload));
+        LOGGER.log(Level.FINE, String.format("[NativeServerPullRequestHookProcessor]HookEventType_bachdebug- %s", hookEvent));
+        LOGGER.log(Level.FINE, String.format("[NativeServerPullRequestHookProcessor]BitbucketType_bachdebug- %s", instanceType));
+        LOGGER.log(Level.FINE, String.format("[NativeServerPullRequestHookProcessor]origin_bachdebug- %s", origin));
+        LOGGER.log(Level.FINE, String.format("[NativeServerPullRequestHookProcessor]serverUrl_bachdebug- %s", serverUrl));
+        Notify_times += 1;
         final NativeServerPullRequestEvent pullRequestEvent;
         try {
             pullRequestEvent = JsonParser.toJava(payload, NativeServerPullRequestEvent.class);
